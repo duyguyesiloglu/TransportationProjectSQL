@@ -1,0 +1,264 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+CREATE TABLE Company ( Business_id int NOT NULL, Address varchar(255), Company_name varchar(255), PRIMARY KEY (Business_id) 
+\fs24 \
+
+\fs29\fsmilli14667 );\uc0\u8232 CREATE TABLE Employee ( 
+\fs24 \
+
+\fs29\fsmilli14667 Employee_id int NOT NULL,\uc0\u8232 Business_id int NOT NULL,\u8232 Trans_dept varchar(255),\u8232 EmployeeTask varchar(255),\u8232 name varchar(255),\u8232 Surname varchar(255),\u8232 WorkingHour varchar(255),\u8232 PRIMARY KEY (Employee_id) ,\u8232 FOREIGN KEY (Business_id) REFERENCES Company(Business_id) 
+\fs24 \
+
+\fs29\fsmilli14667 );\uc0\u8232 CREATE TABLE Subscriber ( 
+\fs24 \
+
+\fs29\fsmilli14667 sub_id int NOT NULL, card_id int not null, business_id int NOT NULL, firstname varchar(255), surname varchar(255), gender varchar(255), 
+\fs24 \
+
+\fs29\fsmilli14667 zip varchar(255),\uc0\u8232 state varchar(255),\u8232 city varchar(255),\u8232 street varchar(255), civilCervant boolean, student boolean, personage varchar(255), 
+\fs24 \
+
+\fs29\fsmilli14667 PRIMARY KEY (Sub_id) , 
+\fs24 \
+
+\fs29\fsmilli14667 FOREIGN KEY (Business_id) REFERENCES Company(Business_id) ); 
+\fs24 \
+
+\fs29\fsmilli14667 CREATE TABLE Expences (\uc0\u8232 Salary_id int NOT NULL,\u8232 Business_id int NOT NULL,\u8232 Maintenance varchar(255),\u8232 Fuel varchar(255),\u8232 PRIMARY KEY (Salary_id) ,\u8232 FOREIGN KEY (Business_id) REFERENCES Company(Business_id) 
+\fs24 \
+
+\fs29\fsmilli14667 );\uc0\u8232 CREATE TABLE Revenues ( 
+\fs24 \
+
+\fs29\fsmilli14667 MoneyATM varchar(255),\uc0\u8232 CardPurchase varchar(255),\u8232 Business_id int NOT NULL,\u8232 FOREIGN KEY (Business_id) REFERENCES Company(Business_id) 
+\fs24 \
+
+\fs29\fsmilli14667 );\uc0\u8232 CREATE TABLE TransportationServices ( 
+\fs24 \
+
+\fs29\fsmilli14667 Business_id int NOT NULL,\uc0\u8232 bussubwaytrain_id int not null,\u8232 primary key (bussubwaytrain_id),\u8232 FOREIGN KEY (Business_id) REFERENCES Company(Business_id) 
+\fs24 \
+
+\fs29\fsmilli14667 ); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1001,901, 1, '\uc0\u73 \u775 skender', 'Aslano\u103 \u774 lu', 'Male', '06134', 'Alt\u305 nda\u103 \u774 ', 'Ankara', 'Selin Sokak',false ,true, '22'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1002,902, 2, 'Asl\uc0\u305 ', 'Ko\'e7', 'Female', '34567', 'Bah\'e7elievler', '\u73 \u775 stanbul', '\'c7i\u103 \u774 dem Sokak',true ,false, '31'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1003,903, 3, 'Beyza', 'Hamzao\uc0\u103 \u774 lu', 'Female', '75843', 'Bornova', '\u73 \u775 zmir', 'Yasemin Sokak',true ,false, '62'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1004,904, 4, 'Sedef', 'Korkmaz', 'Female', '08573', 'Artuklu', '\'c7ank\uc0\u305 r\u305 ', 'Aslan Sokak',true ,false, '53'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1005,905, 5, 'Arda', 'G\'fc\'e7l\'fco\uc0\u103 \u774 lu', 'Male', '87342', 'Bodrum', 'Mersin', 'Deniz Sokak',false ,true, '18'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1006,906, 6, 'Ekrem', 'Y\uc0\u305 lmazel', 'Male', '96754', 'Ba\u115 \u807 ak\u115 \u807 ehir', 'Kayseri', 'Orkun Sokak',false ,true, '25'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1007,907, 7, 'Erencan', '\'d6zgen', 'Male', '96857', 'Kad\uc0\u305 k\'f6y', 'Antalya', 'Beyza Sokak',true ,false, '44'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1008,908, 8, 'Orhan', 'Karadi', 'Male', '23409', 'Elmada\uc0\u103 \u774 ', 'Mardin', 'Beybin Sokak',false ,true, '19'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1009,909, 9, 'Cengizhan', '\'d6zbirinci', 'Male', '18463', 'Bebek', 'Adana', 'S\uc0\u305 la Sokak',true ,false , '45'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Subscriber(sub_id, card_id, business_id , firstname , surname, gender , zip , state , city , street , civilcervant, student , personage) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (1010,910, 10, 'Do\uc0\u103 \u774 ukan', 'T\'f6sten', 'Male', '06754', 'Konya Alt\u305 ', 'Diyarbak\u305 r', 'Pelin Sokak',true ,false , '38'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (1,100001);\uc0\u8232 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (2,100002); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (3,100003);\uc0\u8232 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (4,100004); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (5,100005);\uc0\u8232 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (6,100006); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (7,100007);\uc0\u8232 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (8,100008); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (9,100009);\uc0\u8232 INSERT INTO TransportationServices(business_id , bussubwaytrain_id) VALUES (10,100010); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (101, 1, 'Bus', 'Driver', 'Ahmet', 'Can', '8'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (102, 2, 'Train','Cleaner', 'Bilge', 'Ate\uc0\u115 \u807 ', '4'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (103, 3,'Bus', 'Driver', 'Kerem', '\'d6zt\'fcrk', '7'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (104, 4, 'Subway', 'Driver', 'Umut', 'At\uc0\u305 c\u305 ', '8'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (105, 5, 'Train', 'Cleaner', 'Taner', 'D\'f6nmez', '8'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (106, 6, 'Bus', 'Conductor', 'Cansu', 'Y\uc0\u305 lmaz', '7'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (107, 7, 'Subway', 'Driver', '\uc0\u73 \u775 smet', 'Sa\u103 \u774 lam', '2'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (108, 8, 'Bus', 'Cleaner', 'Ceyda', 'Aslan', '8'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (109, 9, 'Train', 'Driver', 'B\'fc\uc0\u115 \u807 ra', 'Y\u305 lmazer', '5'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Employee(employee_id , business_id , trans_dept , workinghour) 
+\fs24 \
+
+\fs29\fsmilli14667 VALUES (110, 10, 'Bus', 'Conductor', 'Mehmet', '\'d6zt\'fcrko\uc0\u103 \u774 lu', '8'); 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 employeetask, "name" , surname , 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Company(business_id , address , company_name) VALUES (1,'Ankara','Ankara1');\uc0\u8232 INSERT INTO Company(business_id , address , company_name) VALUES (2,'\u73 \u775 stanbul','\u73 \u775 stanbul1'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Company(business_id , address , company_name) VALUES (3,'\uc0\u73 \u775 zmir','\u73 \u775 zmir1');\u8232 INSERT INTO Company(business_id , address , company_name) VALUES (4,'\'c7ank\u305 r\u305 ','\'c7ank\u305 r\u305 1'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Company(business_id , address , company_name) VALUES (5,'Mersin','Mersin1');\uc0\u8232 INSERT INTO Company(business_id , address , company_name) VALUES (6,'Kayseri','Kayseri1'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Company(business_id , address , company_name) VALUES (7,'Antalya','Antalya1');\uc0\u8232 INSERT INTO Company(business_id , address , company_name) VALUES (8,'Mardin','Mardin1'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Company(business_id , address , company_name) VALUES (9,'Adana','Adana1');\uc0\u8232 INSERT INTO Company(business_id , address , company_name) VALUES (10,'Diyarbak\u305 r','Diyarbak\u305 r1'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10001, 1, 'Done', '22 LT');\uc0\u8232 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10002, 2, 'Done', '14 LT'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10003, 3, 'Not Done', '34 LT');\uc0\u8232 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10004, 4, 'Done', '54 LT'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10005, 5, 'Not Done', '4 LT'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10006, 6, 'Not Done', '12 LT');\uc0\u8232 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10007, 7, 'Done', '17 LT'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10008, 8, 'Not Done', '47 LT');\uc0\u8232 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10009, 9, 'Done', '39 LT'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Expences(salary_id , business_id , maintenance , fuel) VALUES (10010, 10, 'Not Done', '50 LT'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (1, '12258', '58');\uc0\u8232 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (2, '34758', '34'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (3, '98432', '12');\uc0\u8232 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (4, '2345', '34'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (5, '4562', '67');\uc0\u8232 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (6, '234', '90'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (7, '5134', '15');\uc0\u8232 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (8, '6785', '36'); 
+\fs24 \
+
+\fs29\fsmilli14667 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (9, '1634', '72');\uc0\u8232 INSERT INTO Revenues(business_id , cardpurchase, moneyatm ) VALUES (10, '155', '22'); 
+\fs24 \
+}

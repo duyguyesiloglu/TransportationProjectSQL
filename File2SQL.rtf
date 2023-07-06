@@ -1,0 +1,120 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+CREATE VIEW vEmployeesWithSales AS\uc0\u8232 SELECT DISTINCT Employees.* FROM Employees 
+\fs24 \
+
+\fs29\fsmilli14667 JOIN Rev ON Employees.EmployeeID = Sales.EmployeeID; 
+\fs24 \
+
+\fs29\fsmilli14667 CREATE VIEW EmployeesWithRevenues AS\uc0\u8232 SELECT DISTINCT Employees.*\u8232 FROM Employees\u8232 JOIN Revenues ON Employees.EmployeeID = Revenues.EmployeeID; 
+\fs24 \
+
+\fs29\fsmilli14667 QUESTIONS AND ANSWERS 
+\fs24 \
+
+\fs29\fsmilli14667 --The Subscriber chart shows the average number of subscribers and their ages. SELECT count(*) as sub_id, avg(personage)\uc0\u8232 FROM Subscriber ; 
+\fs24 \
+
+\fs29\fsmilli14667 --Employee ids and employee task kinds for employees whose working hours are between 2 and 7 a.m. and whose first name begins with the letter "B." 
+\fs24 \
+
+\fs29\fsmilli14667 SELECT Employee_id, employeetask\uc0\u8232 FROM Employee\u8232 WHERE workinghour between '2' and '6' and name LIKE 'b%'; 
+\fs24 \
+
+\fs29\fsmilli14667 --Employees' average working hours are given together with their employee id, name, surname, and working hours. 
+\fs24 \
+
+\fs29\fsmilli14667 SELECT Employee_id, name, surname, WorkingHour FROM Employees 
+\fs24 \
+
+\fs29\fsmilli14667 WHERE(SELECT WorkingHour AVG( WorkingHour )FROM Employees); 
+\fs24 \
+
+\fs29\fsmilli14667 --With a card purchase of more than 2000, the whole revenue is summed. SELECT sum(cardpurchase)\uc0\u8232 FROM Revenues\u8232 WHERE cardpurchase > 2000; 
+\fs24 \
+
+\fs29\fsmilli14667 --List of subscribers' first names, surnames, and zip codes with whom one is a student SELECT s.firstname , s.surname ,s.zip\uc0\u8232 FROM Subscriber s natural join student s\u8232 WHERE s.student = TRUE; 
+\fs24 \
+
+\fs29\fsmilli14667 --The employee with the shortest working hour's number and working hour SELECT COUNT(Employee_id),Workinghour\uc0\u8232 FROM Employee\u8232 WHERE WorkingHour in (select min(WorkingHour) from Employee) 
+\fs24 \
+
+\fs29\fsmilli14667 GROUP BY WorkingHour; 
+\fs24 \
+
+\fs29\fsmilli14667 --List employees with "HAS" in their name SELECT name\uc0\u8232 FROM Employee\u8232 WHERE name like '%Has%; 
+\fs24 \
+
+\fs29\fsmilli14667 --By descending order, all male subscribers' names are written in upper case. SELECT UPPER(s.firstname)\uc0\u8232 FROM subscriber s\u8232 WHERE s.gender = 'Male' 
+\fs24 \
+
+\fs29\fsmilli14667 ORDER BY s.gender,s.firstname desc ; 
+\fs24 \
+
+\fs29\fsmilli14667 --The number of money atms with more than 30 is listed. SELECT MoneyATM 
+\fs24 \
+
+\fs29\fsmilli14667 FROM Revenues\uc0\u8232 GROUP BY MoneyATM HAVING MoneyATM > 30; 
+\fs24 \
+
+\fs29\fsmilli14667 --Subscribers are listed alphabetically by surname, as well as their firstname and surname. SELECT s.firstname,s.surname,\uc0\u8232 FROM Subscriber s\u8232 FULL OUTER JOIN card c on s.sub_id = c. sub_id 
+\fs24 \
+
+\fs29\fsmilli14667 ORDER BY s.surname; 
+\fs24 \
+
+\fs29\fsmilli14667 --Lists the maintenance information which connecting maintenance is null SELECT maintenance\uc0\u8232 FROM Expences\u8232 WHERE maintenance IS NULL; 
+\fs24 \
+
+\fs29\fsmilli14667 -- The employee's employee id and firstname are listed, and the crew with the 'Driver' position is arranged. 
+\fs24 \
+
+\fs29\fsmilli14667 SELECT employee_id, name 
+\fs24 \
+
+\fs29\fsmilli14667 FROM Employee e 
+\fs24 \
+
+\fs29\fsmilli14667 WHERE EXISTS 
+\fs24 \
+
+\fs29\fsmilli14667 (SELECT employeetask FROM Employee e WHERE e.employee_id = a.employee_id and employeetask = 'Driver' ); 
+\fs24 \
+
+\fs29\fsmilli14667 --Listing companies in Ankara with the name Ankara1 and those in Izmir with the name Izmir1 (SELECT Business_id\uc0\u8232 FROM Comany\u8232 WHERE Adress = \'91Ankara\'92 and Company_name='Ankara1') 
+\fs24 \
+
+\fs29\fsmilli14667 UNION\uc0\u8232 (SELECT Business_id\u8232 FROM section\u8232 WHERE Adress = \'91\u73 \u775 zmir\'92 and Company_name = '\u73 \u775 zmir1'); 
+\fs24 \
+
+\fs29\fsmilli14667 --Personal information of subscribers whose employeetasks are set by the same employee SELECT *\uc0\u8232 FROM(select *\u8232 FROM Employee e 
+\fs24 \
+
+\fs29\fsmilli14667 INNER JOIN EmployeeTask t on e.Employee_id = t.Employee_id WHERE sub.gender in ('Male'); 
+\fs24 \
+
+\fs29\fsmilli14667 --Employees will be able to read the names in the subscriber easier if the name and surname are written in capital letters. 
+\fs24 \
+
+\fs29\fsmilli14667 SELECT DISTINCT UPPER firstname, Surname FROM Subscriber; 
+\fs24 \
+
+\fs29\fsmilli14667 --Order the subscribers by city. If city is NULL, then order by state SELECT surname, city, state\uc0\u8232 FROM Subscribers\u8232 ORDER BY(CASE WHEN city IS NULL THEN state ELSE city END); 
+\fs24 \
+
+\fs29\fsmilli14667 --Show Subscriber with zip code SELECT UNIQUE zip\uc0\u8232 FROM Subscriber; 
+\fs24 \
+
+\fs29\fsmilli14667 --Listing MoneyATM's which one has number more than 34 SELECT MoneyATM\uc0\u8232 FROM Revenues\u8232 WHERE MoneyATM > SOME(select MoneyATM 
+\fs24 \
+
+\fs29\fsmilli14667 FROM Revenues\uc0\u8232 WHERE MoneyATM ='34'); 
+\fs24 \
+}
